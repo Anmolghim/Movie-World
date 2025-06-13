@@ -1,0 +1,30 @@
+DROP TABLE IF EXISTS files;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS googleUserInfo;
+
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE files (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    file_name VARCHAR(255) NOT NULL,
+    file_size INT(11) NOT NULL, -- in bytes
+    is_public INT(1) NOT NULL,
+    user_id INT(11) NOT NULL,
+    file_path VARCHAR(255) DEFAULT NULL,
+    file_type VARCHAR(100) DEFAULT NULL,
+    uploaded_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    category ENUM('shorts', 'full') DEFAULT NULL, -- 👈 new column
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE googleUserInfo (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    picture TEXT
+);
