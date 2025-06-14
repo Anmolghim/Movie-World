@@ -12,8 +12,8 @@ $password = '';     // Change this to your database password
 $port = 3307;
 
 // Google OAuth configuration
-$clientID = '404125484471-0ikf5qqsv87kb8ds3st3a3hvg2qm24l4.apps.googleusercontent.com';
-$clientSecret = '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';
+$clientID = '';//add you google Client id from the google developer console.
+$clientSecret = '';//add your google clientsecret from the google developer console.
 $redirectUri = 'http://localhost/FileSharingWebsite/index.php';
 
 // Create Client Request to access Google API
